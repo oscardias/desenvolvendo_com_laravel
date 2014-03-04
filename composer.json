@@ -1,7 +1,7 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "oscardias/desenvolvendo_com_laravel",
+	"description": "Tutorial sobre Laravel da Softerize Magazine.",
+	"keywords": ["softerize", "magazine", "tutorial", "laravel"],
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*"
