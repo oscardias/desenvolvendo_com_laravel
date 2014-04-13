@@ -16,26 +16,5 @@ Route::get('/', function()
     return View::make('hello');
 });
 
-// Listar todos os artigos
-Route::get('/artigos/', function()
-{
-    $artigos = Artigo::get();
-    return View::make('artigos', compact('artigos'));
-});
-
-// Criar um novo artigo
-Route::get('/artigos/inserir', function()
-{
-    return View::make('artigos_inserir');
-});
-Route::post('/artigos/inserir', function()
-{
-    $artigo = new Artigo();
-    
-    $artigo->titulo   = Input::get('titulo');
-    $artigo->conteudo = Input::get('conteudo');
-    
-    $artigo->save();
-    
-    return Redirect::to('/artigos/');
-});
+// Rota de artigos
+Route::controller('artigos', 'ArtigosController');
