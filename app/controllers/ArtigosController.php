@@ -5,12 +5,13 @@ class ArtigosController extends BaseController {
     public function getIndex()
     {
         $artigos = Artigo::get();
-        return View::make('artigos', compact('artigos'));
+        return View::make('artigos.index', compact('artigos'));
     }
 
     public function getInserir()
     {
-        return View::make('artigos_inserir');
+        $titulo = 'Inserir Artigo - Desenvolvendo com Laravel';
+        return View::make('artigos.inserir', compact('titulo'));
     }
     
     public function postInserir()
@@ -28,7 +29,8 @@ class ArtigosController extends BaseController {
     public function getEditar($id)
     {
         $artigo = Artigo::find($id);
-        return View::make('artigos_editar', compact('artigo'));
+        $titulo = 'Editar Artigo - Desenvolvendo com Laravel';
+        return View::make('artigos.editar', compact('artigo', 'titulo'));
     }
     
     public function postEditar()
