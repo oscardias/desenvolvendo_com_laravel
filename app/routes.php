@@ -14,10 +14,27 @@
 // Validação CSRF
 Route::when('*', 'csrf', array('post'));
 
-Route::get('/', function()
-{
-    return View::make('hello');
-});
+// Visitante
+Route::get('/',
+        array(
+            'as' => 'home', 
+            'uses' => 'HomeController@getIndex'
+            )
+        );
 
-// Rota de artigos
-Route::controller('artigos', 'ArtigosController');
+Route::get('entrar', 'HomeController@getEntrar');
+Route::post('entrar', 'HomeController@postEntrar');
+Route::get('sair', 'HomeController@getSair');
+
+// Verifica se o usuário está logado
+Route::group(array('before' => 'auth'), function()
+{
+    // Rota de artigos
+    Route::controller('artigos', 'ArtigosController');
+    
+    // Rotas do administrador
+    Route::group(array('before' => 'auth.admin'), function()
+    {
+        Route::controller('usuarios', 'UsuariosController');
+    });
+});

@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if (Auth::guest()) return Redirect::guest('entrar');
 });
 
 
@@ -43,6 +43,17 @@ Route::filter('auth.basic', function()
 {
 	return Auth::basic();
 });
+
+
+Route::filter('auth.admin', function()
+{
+    $usuario = Auth::user();
+    if($usuario->tipo !== 'admin')
+    {
+        return Redirect::home();
+    }
+});
+
 
 /*
 |--------------------------------------------------------------------------
