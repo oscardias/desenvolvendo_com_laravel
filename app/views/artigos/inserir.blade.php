@@ -6,7 +6,7 @@
 
 <hr>
 
-{{ Form::open(array('url' => 'artigos/editar', 'class' => 'form-horizontal', 'role' => 'form')) }}
+{{ Form::open(array('url' => 'artigos/inserir', 'class' => 'form-horizontal', 'role' => 'form')) }}
 
 <div class="form-group">
     <label for="titulo" class="col-lg-2 control-label">Título</label>
