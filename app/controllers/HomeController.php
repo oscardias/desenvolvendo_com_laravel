@@ -4,7 +4,8 @@ class HomeController extends BaseController {
 
     public function getIndex()
     {
-        return View::make('hello');
+        $artigos = Artigo::with('usuario')->get();
+        return View::make('home/index', compact('artigos'));
     }
 
     public function getEntrar()
@@ -21,10 +22,10 @@ class HomeController extends BaseController {
         {
             $remember = true;
         }
-        
+
         // Autenticação
         if (Auth::attempt(array(
-            'email' => Input::get('email'), 
+            'email' => Input::get('email'),
             'password' => Input::get('senha')
             ), $remember))
         {
@@ -37,7 +38,7 @@ class HomeController extends BaseController {
                 ->withInput();
         }
     }
-    
+
     public function getSair()
     {
         Auth::logout();

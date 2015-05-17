@@ -25,6 +25,7 @@
                 <span class="glyphicon glyphicon-time"></span>
                 {{ date('d/m/Y H:i', strtotime($artigo->created_at)) }}
 
+                @if(Auth::check())
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
                         <a href="{{ url('artigos/editar', $artigo->id) }}" title="Editar"
@@ -33,6 +34,7 @@
                            class="btn btn-default">Remover</a>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="panel-body">
                 <h2>
